@@ -14,7 +14,7 @@ public class ProductModel {
     private UUID idProduct;
     private String name;
     private String description;
-    private double price;
+    private double price = 0;
     // private String image; //Alterar para salvar img
 
     public double getPrice() {

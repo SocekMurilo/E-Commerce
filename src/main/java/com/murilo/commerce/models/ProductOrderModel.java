@@ -20,9 +20,10 @@ public class ProductOrderModel {
     private ProductModel product;
     @ManyToOne
     private OrderModel order;
-    private Integer qty;
-    private Double UnitPrice;
-    
+    private Integer qty = 0;
+    private Double unitPrice = 0.0;
+    private Double totalPrice = 0.0;
+
     public UUID getIdProductOrder() {
         return idProductOrder;
     }
@@ -55,10 +56,18 @@ public class ProductOrderModel {
     }
 
     public Double getUnitPrice() {
-        return UnitPrice;
+        return unitPrice;
     }
 
     public void setUnitPrice(Double unitPrice) {
-        UnitPrice = unitPrice;
+        this.unitPrice = unitPrice;
+    }
+
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.http.MediaType;
-
 
 import com.murilo.commerce.dtos.ProductDto;
 import com.murilo.commerce.models.ProductModel;
@@ -25,7 +23,6 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -44,14 +41,14 @@ public class ProductController {
             @ApiResponse(responseCode = "400", description = "Invalid parameters"),
             @ApiResponse(responseCode = "500", description = "Error creating product"),
     })
-    @PostMapping(value = "/products", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ProductModel> createProduct(@RequestBody @Valid ProductDto productDto) {
         var productModel = new ProductModel();
         BeanUtils.copyProperties(productDto, productModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(productRepository.save(productModel));
     }
 
-    @Operation(summary = "Realiza a criação de novos produtos", method = "POST")
+    @Operation(summary = "è possivel ver todos os produtos", method = "GET")
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Product created successfully"),
         @ApiResponse(responseCode = "422", description = "Invalid request data"),

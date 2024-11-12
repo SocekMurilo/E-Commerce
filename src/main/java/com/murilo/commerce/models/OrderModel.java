@@ -5,7 +5,7 @@ import java.util.UUID;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 public class OrderModel {
     private static final long serialVersionUID = 1L;
     
